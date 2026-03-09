@@ -261,18 +261,20 @@ def retrieve(collection, query, top_k=8):
     } for i in range(len(results["documents"][0]))]
 
 def generate_query_variations(model, question):
-    prompt = f"""Generate 3 different search queries to find NBA information about this question.
+    try:
+        prompt = f"""Generate 3 different search queries to find NBA information about this question.
 Return ONLY the 3 queries, one per line, no numbering, no extra text.
 
 Original question: {question}
 
 3 search queries:"""
-    try:
         response = model.generate_content(prompt)
         variations = [q.strip() for q in response.text.strip().split("\n") if q.strip()]
         return [question] + variations[:3]
-    except:
-        return [question]
+    except Exception:
+        # Fallback to rule-based if quota exceeded
+        q = question.strip().rstrip("?")
+        return [question, f"NBA {q}", f"{q} statistics", f"{q} basketball"]
 
 def retrieve_multi_query(collection, model, question, top_k=5):
     queries  = generate_query_variations(model, question)
