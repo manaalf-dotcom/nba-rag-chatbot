@@ -278,7 +278,7 @@ Original question: {question}
         q = question.strip().rstrip("?")
         return [question, f"NBA {q}", f"{q} statistics", f"{q} basketball"]
 
-def retrieve_multi_query(collection, model, question, top_k=5):
+def retrieve_multi_query(collection, client, question, top_k=5):
     queries = generate_query_variations(client, question)
     seen_ids = set()
     all_chunks = []
@@ -304,17 +304,8 @@ def generate_with_retry(client, prompt, retries=3, wait=15):
                 time.sleep(wait)
             else:
                 raise e
-```
 
-**4. In `requirements.txt`, replace:**
-```
-google-generativeai
-```
-with:
-```
-google-genai
-
-def rag_chat(collection, model, question, history):
+def rag_chat(collection, client, question, history):
     chunks = retrieve_multi_query(collection, client, question)
     context = "\n---\n".join([
         f"[Source: {c['metadata']['source']}]\n{c['text']}"
@@ -386,8 +377,8 @@ def main():
     if "db_ready" not in st.session_state:
         st.session_state.db_ready = False
 
-    # Load model
-    model = setup_gemini()
+    # Load client
+    client = setup_gemini()
 
     # Load / build vector DB
     if not st.session_state.db_ready:
@@ -433,7 +424,7 @@ def main():
         question = st.session_state.pop("pending_question")
         st.session_state.messages.append({"role": "user", "content": question})
         with st.spinner("Searching knowledge base..."):
-            answer, sources = rag_chat(collection, model, question, st.session_state.history)
+            answer, sources = rag_chat(collection, client, question, st.session_state.history)
         st.session_state.messages.append({"role": "assistant", "content": answer, "sources": sources})
         st.session_state.history.append({"question": question, "answer": answer})
         st.rerun()
@@ -449,7 +440,7 @@ def main():
     if submitted and user_input.strip():
         st.session_state.messages.append({"role": "user", "content": user_input})
         with st.spinner("🔍 Searching across multiple queries..."):
-            answer, sources = rag_chat(collection, model, user_input, st.session_state.history)
+            answer, sources = rag_chat(collection, client, user_input, st.session_state.history)
         st.session_state.messages.append({"role": "assistant", "content": answer, "sources": sources})
         st.session_state.history.append({"question": user_input, "answer": answer})
         st.rerun()
