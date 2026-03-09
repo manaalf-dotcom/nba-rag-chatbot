@@ -1,0 +1,18 @@
+PLAYER PROFILE: Paolo Banchero
+==================================================
+
+Position: Forward
+Team: Magic
+Height: 6-10
+Weight: 250 lbs
+Country: USA
+Draft Year: 2022, Round: 1, Pick: 1
+Years Pro: 3
+
+CAREER STATS BY SEASON:
+Season       Team   GP    PTS     REB     AST     STL    BLK    FG%     3P%     FT%
+--------------------------------------------------------------------------------
+2022-23      ORL    72    20.0    6.9     3.7     0.8    0.5    42.7    29.8    73.8
+2023-24      ORL    80    22.6    6.9     5.4     0.9    0.6    45.5    33.9    72.5
+2024-25      ORL    46    25.9    7.5     4.8     0.8    0.6    45.2    32.0    72.7
+2025-26      ORL    48    21.7    8.5     5.1     0.7    0.7    45.1    31.1    77.1

@@ -1,0 +1,25 @@
+NBA LEAGUE LEADERS — BLK — 2024-25
+==================================================
+
+Rank   Player                    Team   BLK
+---------------------------------------------
+1      Victor Wembanyama         SAS    176
+2      Brook Lopez               MIL    148
+3      Myles Turner              IND    144
+4      Walker Kessler            UTA    138
+5      Evan Mobley               CLE    113
+6      Jaren Jackson Jr.         MEM    113
+7      Anthony Davis             DAL    110
+8      Donovan Clingan           POR    110
+9      Rudy Gobert               MIN    104
+10     Daniel Gafford            DAL    102
+11     Alex Sarr                 WAS    101
+12     Isaiah Stewart            DET    101
+13     Nic Claxton               BKN    100
+14     Goga Bitadze              ORL    98
+15     Yves Missi                NOP    98
+16     Peyton Watson             DEN    93
+17     Ivica Zubac               LAC    90
+18     Amen Thompson             HOU    89
+19     Jalen Duren               DET    89
+20     Zach Edey                 MEM    85

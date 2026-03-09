@@ -1,0 +1,35 @@
+GAME LOG: LeBron James — 2024-25 Season
+==================================================
+
+Date           Matchup              W/L   PTS    REB    AST    MIN
+-----------------------------------------------------------------
+Apr 11, 2025   LAL vs. HOU          W     14     4      8      22
+Apr 09, 2025   LAL @ DAL            W     27     7      3      36
+Apr 08, 2025   LAL @ OKC            L     28     7      3      35
+Apr 06, 2025   LAL @ OKC            W     19     3      7      34
+Apr 04, 2025   LAL vs. NOP          W     27     0      8      33
+Apr 03, 2025   LAL vs. GSW          L     33     5      9      40
+Mar 31, 2025   LAL vs. HOU          W     16     8      4      38
+Mar 29, 2025   LAL @ MEM            W     25     6      8      37
+Mar 27, 2025   LAL @ CHI            L     17     5      12     39
+Mar 26, 2025   LAL @ IND            W     13     13     7      38
+Mar 24, 2025   LAL @ ORL            L     24     6      7      38
+Mar 22, 2025   LAL vs. CHI          L     17     6      4      31
+Mar 08, 2025   LAL @ BOS            L     22     14     9      35
+Mar 06, 2025   LAL vs. NYK          W     31     12     8      44
+Mar 04, 2025   LAL vs. NOP          W     34     8      6      33
+Mar 02, 2025   LAL vs. LAC          W     17     5      9      36
+Feb 28, 2025   LAL vs. LAC          W     28     13     3      37
+Feb 27, 2025   LAL vs. MIN          W     33     17     6      37
+Feb 25, 2025   LAL vs. DAL          W     27     12     3      37
+Feb 22, 2025   LAL @ DEN            W     25     9      5      33
+Feb 20, 2025   LAL @ POR            W     40     8      4      36
+Feb 19, 2025   LAL vs. CHA          L     26     7      11     38
+Feb 12, 2025   LAL @ UTA            L     18     6      7      34
+Feb 10, 2025   LAL vs. UTA          W     24     7      8      29
+Feb 06, 2025   LAL vs. GSW          W     42     17     8      38
+Feb 04, 2025   LAL @ LAC            W     26     8      9      31
+Feb 01, 2025   LAL @ NYK            W     33     11     12     37
+Jan 30, 2025   LAL @ WAS            W     24     3      11     27
+Jan 28, 2025   LAL @ PHI            L     31     8      9      33
+Jan 27, 2025   LAL @ CHA            W     22     7      8      36

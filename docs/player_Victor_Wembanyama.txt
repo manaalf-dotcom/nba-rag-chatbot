@@ -1,0 +1,17 @@
+PLAYER PROFILE: Victor Wembanyama
+==================================================
+
+Position: Forward-Center
+Team: Spurs
+Height: 7-4
+Weight: 235 lbs
+Country: France
+Draft Year: 2023, Round: 1, Pick: 1
+Years Pro: 2
+
+CAREER STATS BY SEASON:
+Season       Team   GP    PTS     REB     AST     STL    BLK    FG%     3P%     FT%
+--------------------------------------------------------------------------------
+2023-24      SAS    71    21.4    10.6    3.9     1.2    3.6    46.5    32.5    79.6
+2024-25      SAS    46    24.3    11.0    3.7     1.1    3.8    47.6    35.2    83.6
+2025-26      SAS    46    23.7    11.2    2.9     1.0    2.9    50.1    34.1    81.7

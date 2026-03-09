@@ -1,0 +1,25 @@
+NBA LEAGUE LEADERS — AST — 2024-25
+==================================================
+
+Rank   Player                    Team   AST
+---------------------------------------------
+1      Trae Young                ATL    880
+2      Nikola Jokić              DEN    716
+3      James Harden              LAC    687
+4      Tyrese Haliburton         IND    673
+5      Cade Cunningham           DET    638
+6      Chris Paul                SAS    605
+7      LeBron James              LAL    575
+8      Devin Booker              PHX    529
+9      Darius Garland            CLE    506
+10     Josh Giddey               CHI    503
+11     Shai Gilgeous-Alexander   OKC    486
+12     Jalen Brunson             NYK    475
+13     Russell Westbrook         DEN    457
+14     Josh Hart                 NYK    453
+15     Isaiah Collier            UTA    446
+16     Giannis Antetokounmpo     MIL    433
+17     Jayson Tatum              BOS    431
+18     Tyus Jones                PHX    429
+19     Tyler Herro               MIA    424
+20     Domantas Sabonis          SAC    423

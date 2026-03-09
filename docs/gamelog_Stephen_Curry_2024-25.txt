@@ -1,0 +1,35 @@
+GAME LOG: Stephen Curry — 2024-25 Season
+==================================================
+
+Date           Matchup              W/L   PTS    REB    AST    MIN
+-----------------------------------------------------------------
+Apr 13, 2025   GSW vs. LAC          L     36     3      6      38
+Apr 11, 2025   GSW @ POR            W     14     5      5      27
+Apr 09, 2025   GSW vs. SAS          L     30     8      3      37
+Apr 08, 2025   GSW @ PHX            W     25     9      6      26
+Apr 06, 2025   GSW vs. HOU          L     3      2      8      33
+Apr 04, 2025   GSW vs. DEN          W     36     2      5      32
+Apr 03, 2025   GSW @ LAL            W     37     3      6      34
+Apr 01, 2025   GSW @ MEM            W     52     10     8      37
+Mar 30, 2025   GSW @ SAS            W     13     3      6      26
+Mar 28, 2025   GSW @ NOP            W     23     4      6      34
+Mar 20, 2025   GSW vs. TOR          W     17     2      1      25
+Mar 17, 2025   GSW vs. DEN          L     20     4      7      36
+Mar 15, 2025   GSW vs. NYK          W     28     7      5      35
+Mar 13, 2025   GSW vs. SAC          W     11     2      5      30
+Mar 10, 2025   GSW vs. POR          W     24     2      3      34
+Mar 08, 2025   GSW vs. DET          W     32     3      4      33
+Mar 06, 2025   GSW @ BKN            W     40     4      4      36
+Mar 04, 2025   GSW @ NYK            W     28     7      9      33
+Mar 03, 2025   GSW @ CHA            W     21     3      10     30
+Mar 01, 2025   GSW @ PHI            L     29     5      13     36
+Feb 27, 2025   GSW @ ORL            W     56     4      3      34
+Feb 25, 2025   GSW vs. CHA          W     15     4      6      24
+Feb 23, 2025   GSW vs. DAL          W     30     4      7      29
+Feb 21, 2025   GSW @ SAC            W     20     1      6      31
+Feb 13, 2025   GSW @ HOU            W     27     5      3      35
+Feb 12, 2025   GSW @ DAL            L     25     5      8      37
+Feb 10, 2025   GSW @ MIL            W     38     6      4      34
+Feb 08, 2025   GSW @ CHI            W     34     4      6      34
+Feb 06, 2025   GSW @ LAL            L     37     7      4      37
+Feb 05, 2025   GSW @ UTA            L     32     1      7      35

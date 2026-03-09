@@ -1,0 +1,25 @@
+NBA LEAGUE LEADERS — REB — 2024-25
+==================================================
+
+Rank   Player                    Team   REB
+---------------------------------------------
+1      Ivica Zubac               LAC    1010
+2      Domantas Sabonis          SAC    972
+3      Karl-Anthony Towns        NYK    920
+4      Nikola Jokić              DEN    892
+5      Jalen Duren               DET    807
+6      Giannis Antetokounmpo     MIL    798
+7      Jarrett Allen             CLE    798
+8      Alperen Sengun            HOU    786
+9      Rudy Gobert               MIN    785
+10     Bam Adebayo               MIA    749
+11     Josh Hart                 NYK    737
+12     Nikola Vučević            CHI    735
+13     Walker Kessler            UTA    707
+14     Onyeka Okongwu            ATL    660
+15     Evan Mobley               CLE    659
+16     Jonas Valančiūnas         SAC    627
+17     Jayson Tatum              BOS    623
+18     Isaiah Hartenstein        OKC    611
+19     Yves Missi                NOP    601
+20     Anthony Davis             DAL    590

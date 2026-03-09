@@ -1,0 +1,25 @@
+NBA LEAGUE LEADERS — PTS — 2024-25
+==================================================
+
+Rank   Player                    Team   PTS
+---------------------------------------------
+1      Shai Gilgeous-Alexander   OKC    2484
+2      Anthony Edwards           MIN    2177
+3      Nikola Jokić              DEN    2071
+4      Giannis Antetokounmpo     MIL    2036
+5      Jayson Tatum              BOS    1932
+6      Devin Booker              PHX    1923
+7      Trae Young                ATL    1841
+8      Tyler Herro               MIA    1840
+9      Cade Cunningham           DET    1830
+10     James Harden              LAC    1802
+11     Karl-Anthony Towns        NYK    1759
+12     Zach LaVine               SAC    1724
+13     Jalen Green               HOU    1723
+14     Stephen Curry             GSW    1718
+15     DeMar DeRozan             SAC    1710
+16     LeBron James              LAL    1710
+17     Donovan Mitchell          CLE    1701
+18     Jalen Brunson             NYK    1690
+19     Kevin Durant              PHX    1647
+20     Jaren Jackson Jr.         MEM    1641
