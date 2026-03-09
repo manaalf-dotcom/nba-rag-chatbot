@@ -4,7 +4,7 @@ import time
 import chromadb
 from chromadb.utils import embedding_functions
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-import google.generativeai as genai
+from google import genai
 from nba_api.stats.endpoints import (
     playercareerstats, commonplayerinfo,
     teamyearbyyearstats, playergamelog, leagueleaders
@@ -154,8 +154,8 @@ html, body, [class*="css"] {
 @st.cache_resource
 def setup_gemini():
     api_key = st.secrets["GEMINI_API_KEY"]
-    genai.configure(api_key=api_key)
-    return genai.GenerativeModel("gemini-2.5-flash-lite")
+    client = genai.Client(api_key=api_key)
+    return client
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DATA COLLECTION HELPERS
@@ -260,7 +260,7 @@ def retrieve(collection, query, top_k=8):
         "score":    1 - results["distances"][0][i]
     } for i in range(len(results["documents"][0]))]
 
-def generate_query_variations(model, question):
+def generate_query_variations(client, question):
     try:
         prompt = f"""Generate 3 different search queries to find NBA information about this question.
 Return ONLY the 3 queries, one per line, no numbering, no extra text.
@@ -268,16 +268,18 @@ Return ONLY the 3 queries, one per line, no numbering, no extra text.
 Original question: {question}
 
 3 search queries:"""
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
         variations = [q.strip() for q in response.text.strip().split("\n") if q.strip()]
         return [question] + variations[:3]
     except Exception:
-        # Fallback to rule-based if quota exceeded
         q = question.strip().rstrip("?")
         return [question, f"NBA {q}", f"{q} statistics", f"{q} basketball"]
 
 def retrieve_multi_query(collection, model, question, top_k=5):
-    queries  = generate_query_variations(model, question)
+    queries = generate_query_variations(client, question)
     seen_ids = set()
     all_chunks = []
     for query in queries:
@@ -289,18 +291,31 @@ def retrieve_multi_query(collection, model, question, top_k=5):
     all_chunks.sort(key=lambda x: x["score"], reverse=True)
     return all_chunks[:10]
 
-def generate_with_retry(model, prompt, retries=3, wait=15):
+def generate_with_retry(client, prompt, retries=3, wait=15):
     for attempt in range(retries):
         try:
-            return model.generate_content(prompt).text.strip()
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt
+            )
+            return response.text.strip()
         except Exception as e:
             if "429" in str(e) and attempt < retries - 1:
                 time.sleep(wait)
             else:
                 raise e
+```
+
+**4. In `requirements.txt`, replace:**
+```
+google-generativeai
+```
+with:
+```
+google-genai
 
 def rag_chat(collection, model, question, history):
-    chunks  = retrieve_multi_query(collection, model, question)
+    chunks = retrieve_multi_query(collection, client, question)
     context = "\n---\n".join([
         f"[Source: {c['metadata']['source']}]\n{c['text']}"
         for c in chunks
@@ -327,7 +342,7 @@ QUESTION: {question}
 
 ANSWER:"""
 
-    answer  = generate_with_retry(model, prompt)
+    answer = generate_with_retry(client, prompt)
     sources = list(set([c['metadata']['source'] for c in chunks]))
     return answer, sources
 
