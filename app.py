@@ -172,6 +172,24 @@ def safe_call(fn, *args, **kwargs):
 def collect_all_docs() -> list[dict]:
     """Collects all NBA data and returns as list of doc dicts."""
     docs = []
+
+    # ── Rulebook PDF ──────────────────────────────────────────────────────────
+    import fitz
+    pdf_path = "Official-2025-26-NBA-Playing-Rules.pdf"
+    if os.path.exists(pdf_path):
+        pdf_doc = fitz.open(pdf_path)
+        for page_num in range(len(pdf_doc)):
+            text = pdf_doc[page_num].get_text("text").strip()
+            if len(text) < 80:
+                continue
+            docs.append({
+                "id":      f"rulebook_p{page_num+1}",
+                "title":   "NBA Official Rulebook 2025-26",
+                "source":  "Official-2025-26-NBA-Playing-Rules.pdf",
+                "page":    page_num + 1,
+                "content": text
+            })
+        pdf_doc.close()
     all_players   = players.get_players()
     player_lookup = {p["full_name"]: p for p in all_players}
 
