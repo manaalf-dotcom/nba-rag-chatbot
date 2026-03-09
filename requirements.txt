@@ -2,6 +2,6 @@ streamlit
 chromadb
 sentence-transformers
 langchain-text-splitters
-google-generativeai
+google-genai
 nba_api
 pymupdf
