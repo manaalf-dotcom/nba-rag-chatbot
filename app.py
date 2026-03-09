@@ -170,10 +170,9 @@ def safe_call(fn, *args, **kwargs):
     return None
 
 def collect_all_docs() -> list[dict]:
-    """Collects all NBA data and returns as list of doc dicts."""
     docs = []
 
-    # ── Rulebook PDF ──────────────────────────────────────────────────────────
+    # Read rulebook PDF
     import fitz
     pdf_path = "Official-2025-26-NBA-Playing-Rules.pdf"
     if os.path.exists(pdf_path):
@@ -190,85 +189,22 @@ def collect_all_docs() -> list[dict]:
                 "content": text
             })
         pdf_doc.close()
-    all_players   = players.get_players()
-    player_lookup = {p["full_name"]: p for p in all_players}
 
-    TOP_PLAYERS = [
-        "LeBron James", "Stephen Curry", "Kevin Durant", "Giannis Antetokounmpo",
-        "Joel Embiid", "Jayson Tatum", "Damian Lillard", "Anthony Davis",
-        "Devin Booker", "Trae Young", "Ja Morant", "Zion Williamson",
-        "Anthony Edwards", "Tyrese Haliburton", "Bam Adebayo", "Donovan Mitchell",
-        "Paolo Banchero", "Victor Wembanyama", "Cade Cunningham", "Evan Mobley",
-        "Karl-Anthony Towns", "Darius Garland"
-    ]
-
-    # Player career stats
-    for name in TOP_PLAYERS:
-        player = player_lookup.get(name)
-        if not player:
-            continue
-        pid    = player["id"]
-        career = safe_call(playercareerstats.PlayerCareerStats, player_id=pid)
-        info   = safe_call(commonplayerinfo.CommonPlayerInfo, player_id=pid)
-        if not career or not info:
-            continue
-        career_df = career.season_totals_regular_season.get_data_frame()
-        info_df   = info.common_player_info.get_data_frame()
-        if career_df.empty:
-            continue
-
-        lines = [f"PLAYER PROFILE: {name}\n{'='*50}\n"]
-        if not info_df.empty:
-            row = info_df.iloc[0]
-            lines.append(f"Position: {row.get('POSITION','N/A')}")
-            lines.append(f"Team: {row.get('TEAM_NAME','N/A')}")
-            lines.append(f"Height: {row.get('HEIGHT','N/A')}, Weight: {row.get('WEIGHT','N/A')} lbs")
-            lines.append(f"Draft: {row.get('DRAFT_YEAR','N/A')} Rd {row.get('DRAFT_ROUND','N/A')} Pick {row.get('DRAFT_NUMBER','N/A')}\n")
-
-        lines.append("CAREER STATS BY SEASON:")
-        lines.append(f"{'Season':<12} {'Team':<6} {'GP':<5} {'PTS':<7} {'REB':<7} {'AST':<7} {'FG%':<7} {'3P%'}")
-        lines.append("-" * 65)
-
-        for _, row in career_df.iterrows():
-            gp  = row.get("GP", 0)
-            pts = round(row.get("PTS", 0) / gp, 1) if gp else 0
-            reb = round(row.get("REB", 0) / gp, 1) if gp else 0
-            ast = round(row.get("AST", 0) / gp, 1) if gp else 0
-            fg  = round(row.get("FG_PCT", 0) * 100, 1)
-            tp  = round(row.get("FG3_PCT", 0) * 100, 1)
-            lines.append(f"{str(row.get('SEASON_ID','')):<12} {str(row.get('TEAM_ABBREVIATION','')):<6} {gp:<5} {pts:<7} {reb:<7} {ast:<7} {fg:<7} {tp}")
-
-        docs.append({"id": f"player_{name}", "title": name, "source": f"player_{name}.txt", "page": 1, "content": "\n".join(lines)})
-
-    # Teams
-    for team in teams.get_teams():
-        result = safe_call(teamyearbyyearstats.TeamYearByYearStats, team_id=team["id"])
-        if not result:
-            continue
-        df = result.team_stats.get_data_frame()
-        if df.empty:
-            continue
-        lines = [f"TEAM PROFILE: {team['full_name']}\n{'='*50}\n"]
-        lines.append(f"City: {team['city']}, State: {team['state']}, Founded: {team['year_founded']}\n")
-        lines.append("SEASON RECORDS (last 10):")
-        lines.append(f"{'Season':<12} {'W':<5} {'L':<5} {'Win%':<8} {'PTS/G'}")
-        lines.append("-" * 40)
-        for _, row in df.tail(10).iterrows():
-            gp = row.get("GP", 1)
-            lines.append(f"{str(row.get('YEAR','')):<12} {str(row.get('WINS','')):<5} {str(row.get('LOSSES','')):<5} {round(row.get('WIN_PCT',0)*100,1):<8} {round(row.get('PTS',0),1)}")
-        docs.append({"id": f"team_{team['full_name']}", "title": team['full_name'], "source": f"team_{team['full_name']}.txt", "page": 1, "content": "\n".join(lines)})
-
-    # League leaders
-    SEASON = "2024-25"
-    for stat_cat in ["PTS", "REB", "AST", "STL", "BLK"]:
-        result = safe_call(leagueleaders.LeagueLeaders, stat_category_abbreviation=stat_cat, season=SEASON)
-        if not result:
-            continue
-        df = result.league_leaders.get_data_frame().head(20)
-        lines = [f"NBA LEAGUE LEADERS — {stat_cat} — {SEASON}\n{'='*50}\n"]
-        for rank, (_, row) in enumerate(df.iterrows(), 1):
-            lines.append(f"{rank}. {row.get('PLAYER','')} ({row.get('TEAM','')}) — {row.get(stat_cat,'N/A')}")
-        docs.append({"id": f"leaders_{stat_cat}", "title": f"League Leaders {stat_cat}", "source": f"leaders_{stat_cat}.txt", "page": 1, "content": "\n".join(lines)})
+    # Read pre-collected stats txt files
+    docs_folder = "docs"
+    if os.path.exists(docs_folder):
+        for filename in os.listdir(docs_folder):
+            if filename.endswith(".txt"):
+                with open(os.path.join(docs_folder, filename), "r", encoding="utf-8") as f:
+                    content = f.read()
+                first_line = content.split("\n")[0].replace("PLAYER PROFILE: ", "").replace("TEAM PROFILE: ", "").replace("GAME LOG: ", "").replace("NBA LEAGUE LEADERS — ", "").strip()
+                docs.append({
+                    "id":      filename,
+                    "title":   first_line,
+                    "source":  filename,
+                    "page":    1,
+                    "content": content
+                })
 
     return docs
 
